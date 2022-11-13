@@ -6,8 +6,9 @@ def mostrar_index(request):
 
 
 def mostrar_pedido(request):
-   pedido1 = haga_su_pedido(nombre = '', e_mail = '', cantidad_de_personas ='', nombre_torta='', relleno='', crocante='', numero_de_pisos=''),
-   return render(request, 'haga_su_pedido.html' ,{'haga_su_pedido':[pedido1]})
+   pedido1 = haga_su_pedido( nombre='rodolfo', e_mail='nicolasamato@outlook.com' , cantidad_de_personas=12)
+   pedido2 = haga_su_pedido( nombre='maru', e_mail='maru@outlook.com' , cantidad_de_personas=12)
+   return render(request, 'consulta_pedido.html' ,{'mostrar_pedido':[pedido1, pedido2]})
 
 
 def nuevo_pedido(request):
