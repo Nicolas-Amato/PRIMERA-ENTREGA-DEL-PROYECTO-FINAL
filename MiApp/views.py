@@ -1,18 +1,13 @@
 from django.shortcuts import render
 from MiApp.models import haga_su_pedido, tipo_de_postre, tipo_de_relleno 
 
-
 def mostrar_index(request):
    return render(request, 'index.html')
 
 def nuevo_pedido(request):
-
    if request.method == 'post':
-
       mostrar_pedido = mostrar_pedido (nombre=request.post['nombre'], e_mai=request.post['e_mai'], cantidad_de_personas=request.post['cantidad_de_personas'])
-      
       mostrar_pedido.save()
-      
       return render(request, 'index.html')
       
    return render(request, 'crear_nuevo_pedido.html')
