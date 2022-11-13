@@ -18,5 +18,3 @@ class tipo_de_relleno(models.Model):
     relleno = models.CharField(max_length = 40)
     crocante = models.CharField(max_length = 40)
     numero_de_pisos = models.IntegerField()
-
-class

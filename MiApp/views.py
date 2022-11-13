@@ -4,14 +4,6 @@ from MiApp.models import haga_su_pedido, tipo_de_postre, tipo_de_relleno
 def mostrar_index(request):
    return render(request, 'index.html')
 
-def nuevo_pedido(request):
-   if request.method == 'post':
-      mostrar_pedido = mostrar_pedido (nombre=request.post['nombre'], e_mai=request.post['e_mai'], cantidad_de_personas=request.post['cantidad_de_personas'])
-      mostrar_pedido.save()
-      return render(request, 'index.html')
-      
-   return render(request, 'crear_nuevo_pedido.html')
-
 
 def mostrar_pedido(request):
    pedido1 = haga_su_pedido(nombre = 'rodolfo', e_mail = 'nicolasamato@outlook.com', cantidad_de_personas = 12)
@@ -20,12 +12,23 @@ def mostrar_pedido(request):
 
 
 
+def nuevo_pedido(request):
+   if request.method == 'post':
+      mostrar_pedido = mostrar_pedido (nombre=request.post['nombre'], e_mai=request.post['e_mai'], cantidad_de_personas=request.post['cantidad_de_personas'])
+      mostrar_pedido.save()
+      return render(request, 'tipo_de_postre.html')
+   return render(request, 'crear_nuevo_pedido.html')
+
+
+
 def mostrar_tipo_de_postre(request):
-  pedido_postre = tipo_de_postre(cantidad_de_personas = 12, nombre_torta = 'copitos', relleno = 'chocolate y dulcedeleche' )
-  return render(request, 'tipo_de_postre.html' ,{'tipo_de_postre':[pedido_postre]})
+   if request.method == 'post':
+      pedido_postre = pedido_postre (cantidad_de_personas=request.post['cantidad_de_personas'], nombre_torta=request.post['nombre_torta'], relleno=request.post['relleno'])
+      pedido_postre.save()        
+   return render(request, 'tipo_de_relleno.html')
 
 
   
 def mostrar_tipo_de_relleno(request):
    pedido_relleno = tipo_de_relleno(relleno = 'chocolate y dulcedeleche', crocante = 'mani', numero_de_pisos = 3 )
-   return render(request, 'tipo_de_relleno.html' ,{'tipo_de_relleno':[pedido_relleno]})
+   return render(request, 'index.html' ,{'tipo_de_relleno':[pedido_relleno]})
