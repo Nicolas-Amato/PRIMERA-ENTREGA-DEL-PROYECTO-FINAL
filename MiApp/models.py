@@ -5,7 +5,7 @@ from django.db import models
 class haga_su_pedido(models.Model):
     nombre = models.CharField(max_length = 40)
     e_mail = models.EmailField()
-    cantidad_de_personas = models.IntegerField()
+    cantidad_de_personas = models.IntegerField(null=True)
 
 
 class tipo_de_postre(models.Model):

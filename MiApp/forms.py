@@ -1,5 +1,6 @@
 from django import forms
 
+
 class haga_su_pedidoForm(forms.Form):
     nombre = forms.CharField(max_length = 40)
     e_mail = forms.EmailField()

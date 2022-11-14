@@ -9,18 +9,10 @@ def mostrar_index(request):
 
 def mostrar_pedido(request):
 
-   pedido1 = haga_su_pedido( nombre=['nombre'], e_mail=['e_mail'] , cantidad_de_personas=['cantidad_de_personas'])
+   pedido1 = haga_su_pedido(nombre=['nombre'], e_mail=['e_mail'] , cantidad_de_personas=['cantidad_de_personas'])
    
    return render(request, 'consulta_pedido.html' ,{'haga_su_pedido':[pedido1]})
 
-
-#otra opcion de def nuevo_pedido#
-#def nuevo_pedido(request):
-   if request.method == 'POST':          
-      nue_pedido = haga_su_pedido(nombre=request.POST['nombre'], e_mai=request.POST['e_mai'])
-      nue_pedido.save()
-      return render(request, 'tipo_de_postre.html')
-   return render(request, 'crear_nuevo_pedido.html')
 
 def nuevo_pedido(request):
    if request.method == 'POST':
@@ -31,7 +23,7 @@ def nuevo_pedido(request):
          
          formulario_PN_limpio = formulario_PN.cleaned_data
          
-         nuevo_pedido = haga_su_pedido(nombre=formulario_PN_limpio['nombre'], e_mai=formulario_PN_limpio['e_mai'])
+         nuevo_pedido = haga_su_pedido(nombre=formulario_PN_limpio['nombre'], e_mail=formulario_PN_limpio['e_mail'], cantidad_de_personas=formulario_PN_limpio['cantidad_de_personas'])
          
          nuevo_pedido.save()
          
