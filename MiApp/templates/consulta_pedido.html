@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body> 
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block codigoDinamico %} 
+
+<form action="" method="post"> {% csrf_token %}
+
+   
     <p> CONSULTA DE PEDIDOS: </p>
 
     {% for pedido in haga_su_pedido %}
@@ -14,6 +14,7 @@
         <p>el cliente {{pedido.nombre}} ha realizado un pedido para {{pedido.cantidad_de_personas}} personas, reenviar comprobante al e_mail {{pedido.e_mail}}</p>
 
     {% endfor %}
+    
+</form>
 
-</body>
-</html>
+{% endblock %}
